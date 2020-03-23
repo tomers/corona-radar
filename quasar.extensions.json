@@ -1,0 +1,5 @@
+{
+  "geolocation": {
+    "installVueGoogleMaps": true
+  }
+}
