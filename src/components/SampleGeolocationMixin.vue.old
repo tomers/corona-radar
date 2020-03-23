@@ -1,0 +1,47 @@
+<script>
+import { mapGeolocationActions, mapGeolocationGetters } from 'quasar-app-extension-geolocation/src/store'
+
+export default {
+  data () {
+    return {
+      pollingTimer: null
+    }
+  },
+  computed: {
+    ...mapGeolocationGetters([
+      // 'isPermissionKnown',
+      // 'isPermissionGranted',
+      // 'isPermissionPrompt',
+      'isPermissionDenied'
+      // 'hasPosition'
+    ])
+  },
+  created () {
+    this.doSampleGeolocation()
+  },
+  methods: {
+    async doQueryPermission () {
+      await this.queryPermission()
+      if (this.isPermissionDenied) {
+        // poll permission as the user might allow them in a separate tab
+        this.pollingTimer = setTimeout(() => this.doQueryPermission(), 2000)
+      } else if (this.pollingTimer) {
+        clearTimeout(this.pollingTimer)
+      }
+    },
+    async doSampleGeolocation () {
+      await this.doQueryPermission()
+      try {
+        await this.samplePosition()
+      } finally {
+        // update permissions (as the user might have enabled them)
+        await this.doQueryPermission()
+      }
+    },
+    ...mapGeolocationActions([
+      'samplePosition',
+      'queryPermission'
+    ])
+  }
+}
+</script>

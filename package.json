@@ -10,6 +10,7 @@
   "scripts": {
     "dev": "quasar dev",
     "deploy": "quasar build && dotenv-load surge ./dist/spa/ \\${SURGE_DOMAIN} --token \\${SURGE_TOKEN}",
+    "flask-proxy": "./flask-proxy/run_server.sh",
     "lint": "eslint --ext .js,.vue src",
     "test": "echo \"No test specified\" && exit 0"
   },
