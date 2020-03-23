@@ -9,6 +9,7 @@
   "private": true,
   "scripts": {
     "dev": "quasar dev",
+    "deploy": "quasar build && dotenv-load surge ./dist/spa/ \\${SURGE_DOMAIN} --token \\${SURGE_TOKEN}",
     "lint": "eslint --ext .js,.vue src",
     "test": "echo \"No test specified\" && exit 0"
   },
@@ -30,7 +31,8 @@
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^6.1.2",
-    "quasar-app-extension-geolocation": "^0.0.4"
+    "quasar-app-extension-geolocation": "^0.0.4",
+    "surge": "^0.21.3"
   },
   "engines": {
     "node": ">= 10.18.1",
