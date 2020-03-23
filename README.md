@@ -1,4 +1,4 @@
-# Corona Radar (corona-radar)
+# Corona Radar
 
 An app to locate nearest Corona incident
 
