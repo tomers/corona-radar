@@ -1,6 +1,7 @@
 export default function () {
   return {
     coords: null,
-    rawFeatures: []
+    rawFeatures: [],
+    maxDistanceMeters: 10000
   }
 }

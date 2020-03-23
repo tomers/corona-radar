@@ -1,29 +1,22 @@
 <template>
   <div>
-    <div>getterNearesFeatures {{ getterNearesFeatures }}</div>
+    <div
+      v-for="(f, i) in getterNearesFeatures"
+      :key="`feature_${i}`"
+    >
+      {{ f }}
+    </div>
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-// import { mapGeolocationGetters } from 'quasar-app-extension-geolocation/src/store'
-// import SampleGeolocationMixin from './SampleGeolocationMixin'
 
 export default {
-  // mixins: [
-  //   SampleGeolocationMixin
-  // ],
   data () {
     return {}
   },
   computed: {
-    // position () {
-    //   return this.coords && [this.coords.longitude, this.coords.latitude]
-    // },
-    // ...mapGeolocationGetters([
-    //   'coords'
-    // ])
-    // ...mapState('coronaGis', ['features']),
     ...mapGetters('coronaGis', [
       'getterNearesFeatures'
     ])
